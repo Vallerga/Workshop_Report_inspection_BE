@@ -1,4 +1,4 @@
-package workshop.report.model;
+package workshop.report.model.template;
 
 import java.util.List;
 
@@ -10,30 +10,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name = "Workshop")
-@Table(name = "Workshop")
-public class Workshop {
+import workshop.report.model.Employee;
+
+@Entity(name = "Section")
+@Table(name = "Section")
+public class Section {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "WorkshopId", nullable = false, unique = true)
-	private Integer workshopId;
+	@Column(name = "SectionId", nullable = false, unique = true)
+	private Integer sectionId;
 
 	@Column(name = "Name", nullable = true)
 	private String name;
 
-	@Column(name = "Address", nullable = true)
-	private String address;
-
-	@Column(name = "Telephone", nullable = true)
-	private String telephone;
-
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "EmployeeId")
-	private Employee manager;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ComponentTemplateId")
+	private ComponentTemplate template;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EmployeeId")

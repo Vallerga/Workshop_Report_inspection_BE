@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import workshop.report.model.InspectionReport;
-import workshop.report.model.statement.QualityStatement;
+import workshop.report.model.template.QualityStatement;
 
 @Entity(name = "NumberStatementOutcome")
 @Table(name = "NumberStatementOutcome")

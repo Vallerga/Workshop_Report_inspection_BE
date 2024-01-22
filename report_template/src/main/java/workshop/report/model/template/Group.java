@@ -1,4 +1,4 @@
-package workshop.report.model.statement;
+package workshop.report.model.template;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,19 +10,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name = "Section")
-@Table(name = "Section")
-public class Section {
+@Entity(name = "Group")
+@Table(name = "Group")
+public class Group {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "SectionId", nullable = false, unique = true)
-	private Integer sectionId;
+	@Column(name = "GroupId", nullable = false, unique = true)
+	private Integer groupId;
 
 	@Column(name = "Name", nullable = true)
 	private String name;
 
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ComponentTemplateId")
-	private ComponentTemplate template;
+	@JoinColumn(name = "SectionId")
+	private Section section;
 }

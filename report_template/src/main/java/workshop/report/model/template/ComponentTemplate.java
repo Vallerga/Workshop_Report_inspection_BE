@@ -1,4 +1,4 @@
-package workshop.report.model.statement;
+package workshop.report.model.template;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

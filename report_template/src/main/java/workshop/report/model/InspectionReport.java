@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import workshop.report.model.statement.ComponentTemplate;
+import workshop.report.model.template.ComponentTemplate;
 
 @Entity(name = "InspectionReport")
 @Table(name = "InspectionReport")
