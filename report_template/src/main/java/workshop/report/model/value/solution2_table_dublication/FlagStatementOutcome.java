@@ -7,7 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import workshop.report.model.InspectionReport;
@@ -22,11 +23,11 @@ public class FlagStatementOutcome {
 	@Column(name = "FlagStatementOutcomeId", nullable = false, unique = true)
 	private Integer flagStatementOutcomeId;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "QualityStatementId")
 	private QualityStatement qualityStatement;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "InspectionReportId")
 	private InspectionReport inspectionReport;
 

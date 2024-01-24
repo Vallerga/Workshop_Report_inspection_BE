@@ -9,7 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "PurchaseOrder")
@@ -21,9 +22,13 @@ public class PurchaseOrder {
 	@Column(name = "PurchaseOrderId", nullable = false, unique = true)
 	private Integer purchaseOrderId;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CustomerId")
 	private Customer customer;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ServiceOrderId")
+	private ServiceOrder serviceOrder;
 
 	@Column(name = "Amount", nullable = true)
 	private Integer amount;

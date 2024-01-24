@@ -10,7 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "Employee")
@@ -30,8 +31,12 @@ public class Employee {
 
 	@Column(name = "Role", nullable = true)
 	private String role;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "WorkshopId", nullable = true)
+	private Workshop workshopManaged;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "WorkshopId")
 	private Workshop workshop;
 

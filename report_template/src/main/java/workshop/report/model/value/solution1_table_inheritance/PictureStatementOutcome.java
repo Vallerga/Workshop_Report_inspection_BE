@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity(name = "PictureStatementOutcome")
@@ -19,7 +19,7 @@ public class PictureStatementOutcome {
 	@Column(name = "PictureStatementOutcomeId", nullable = false, unique = true)
 	private Integer pictureStatementOutcomeId;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "StatementOutcomeId")
 	private StatementOutcome statementOutcome;
 

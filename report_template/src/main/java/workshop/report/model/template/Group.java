@@ -1,5 +1,7 @@
 package workshop.report.model.template;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +25,11 @@ public class Group {
 	@Column(name = "Name", nullable = true)
 	private String name;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SectionId")
 	private Section section;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "QualityStatementId")
+	private List<QualityStatement> qualityStatements;
 }

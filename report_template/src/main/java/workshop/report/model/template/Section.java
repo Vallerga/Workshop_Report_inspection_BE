@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import workshop.report.model.Employee;
-
 @Entity(name = "Section")
 @Table(name = "Section")
 public class Section {
@@ -27,11 +25,11 @@ public class Section {
 	@Column(name = "Name", nullable = true)
 	private String name;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ComponentTemplateId")
-	private ComponentTemplate template;
-	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "EmployeeId")
-	private List<Employee> employees;
+	@JoinColumn(name = "ComponentTemplateId")
+	private ComponentTemplate componentTemplate;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "GroupId")
+	private List<Group> groups;
 }
