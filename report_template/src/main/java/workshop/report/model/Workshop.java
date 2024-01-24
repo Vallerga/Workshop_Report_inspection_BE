@@ -29,7 +29,7 @@ public class Workshop {
 	private String address;
 
 	@Column(name = "Telephone", nullable = true)
-	private String telephone;
+	private Integer telephone;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EmployeeId")
